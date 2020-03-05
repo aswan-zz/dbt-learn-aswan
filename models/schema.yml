@@ -18,6 +18,18 @@ models:
         tests:
           - unique
           - not_null
+  - name: stg_payments
+    description: One record per order
+    columns:
+      - name: payment_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        description: Payment amount for order
+        tests:
+          - not_null
   - name: stg_orders
     description: This model cleans up order data
     columns:
