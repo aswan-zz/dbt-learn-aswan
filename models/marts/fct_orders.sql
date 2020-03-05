@@ -5,13 +5,13 @@
 }}
 
 with customers as (
-    select * from {{ ref('stg_customers') }}
+    select * from {{ ref('stg_jaffle_shop_customers') }}
 ),
 orders as (
-    select * from {{ ref('stg_orders') }}
+    select * from {{ ref('stg_jaffle_shop_orders') }}
 ),
 payments as (
-    select * from {{ ref('stg_payments') }}
+    select * from {{ ref('stg_jaffle_shop_payments') }}
 ),
 final as (
     select
@@ -19,8 +19,8 @@ final as (
         customers.customer_id,
         sum(payments.amount) as amount
     from customers
-    left join orders using (customer_id)
-    left join payments using (order_id)
+    inner join orders using (customer_id)
+    inner join payments using (order_id)
     group  by 1, 2
 )
 select * from final
