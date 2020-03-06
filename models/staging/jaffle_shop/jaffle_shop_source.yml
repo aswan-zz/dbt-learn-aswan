@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: raw
+    schema: jaffle_shop
+    loader: unknown
+    freshness:
+      warn_after: {count: 30, period: day}
+      error_after: {count: 900, period: day}
+    tables:
+      - name: customers        
+      - name: orders
+        loaded_at_field: order_date::timestamp

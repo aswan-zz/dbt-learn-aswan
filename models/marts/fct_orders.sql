@@ -11,7 +11,7 @@ orders as (
     select * from {{ ref('stg_jaffle_shop_orders') }}
 ),
 payments as (
-    select * from {{ ref('stg_jaffle_shop_payments') }}
+    select * from {{ ref('stg_stripe_payments') }}
 ),
 final as (
     select

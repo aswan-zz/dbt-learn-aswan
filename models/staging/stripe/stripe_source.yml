@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: stripe
+    database: raw
+    schema: stripe
+    loader: unknown
+    loaded_at_field: created::timestamp
+    freshness:
+      warn_after: {count: 30, period: day}
+      error_after: {count: 900, period: day}
+    tables:
+      - name: payment
